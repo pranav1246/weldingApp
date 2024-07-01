@@ -87,7 +87,7 @@ const Navbar = () => {
     {
       label: 'Other Machineries',
       subItems: [
-        { label: 'Plasma Cutters', path: '/plasma-cutters' },
+        { label: 'Plasma Cutters', path: '/plasma-cutter' },
         { label: 'Compressors', path: '/compressors' },
         { label: 'Industrial Vacuum Cleaner', path: '/vaccum-cleaner' },
       ],
@@ -95,7 +95,7 @@ const Navbar = () => {
     {
       label: 'Spare Parts',
       subItems: [
-        { label: 'Welding Service Parts', path: '/welding-serive-parts' },
+        { label: 'Welding Service Parts', path: '/spare-parts' },
         { label: 'Mig Spare Parts', path: '/mig-spare-parts' },
       ],
     },
