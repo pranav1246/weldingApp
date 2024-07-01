@@ -29,16 +29,16 @@ const Footer = () => {
           mb: 2,
         }}
       >
-        <IconButton href="https://www.facebook.com" target="_blank" aria-label="Facebook" sx={{ color: 'white' }}>
+        <IconButton href="" target="_blank" aria-label="Facebook" sx={{ color: 'white' }}>
           <FacebookIcon />
         </IconButton>
-        <IconButton href="https://www.instagram.com" target="_blank" aria-label="Instagram" sx={{ color: 'white' }}>
+        <IconButton href="" target="_blank" aria-label="Instagram" sx={{ color: 'white' }}>
           <InstagramIcon />
         </IconButton>
-        <IconButton href="https://twitter.com" target="_blank" aria-label="Twitter" sx={{ color: 'white' }}>
+        <IconButton href="" target="_blank" aria-label="Twitter" sx={{ color: 'white' }}>
           <TwitterIcon />
         </IconButton>
-        <IconButton href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn" sx={{ color: 'white' }}>
+        <IconButton href="" target="_blank" aria-label="LinkedIn" sx={{ color: 'white' }}>
           <LinkedInIcon />
         </IconButton>
       </Box>
@@ -49,19 +49,19 @@ const Footer = () => {
       </Typography>
       <Typography variant="body2" align="center">
         <Box>
-          {'Name: Your Name'}
+          {'Pravin Nair'}
         </Box>
         <Box>
-          {'Phone: (123) 456-7890'}
+          {'Phone: 9746323707'}
         </Box>
         <Box>
-          {'Email: your.email@example.com'}
+          {'Email: saffroninnovation@gmail.com'}
         </Box>
       </Typography>
       <Typography variant="body2" align="center" sx={{ mt: 1 }}>
         {'© '}
         <Link color="inherit" href="#" underline="hover">
-          Your Company
+         SAFFRON
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -71,3 +71,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
