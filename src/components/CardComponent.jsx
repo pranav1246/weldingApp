@@ -16,11 +16,12 @@ const CardComponent = ({ imageUrl, title, price, details }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 300 }}>
       <CardMedia
         component="img"
-        height="380"
+        height="300"
         image={imageUrl}
+        sx={{ objectFit: "contain" }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

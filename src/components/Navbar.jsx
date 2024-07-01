@@ -99,7 +99,7 @@ const Navbar = () => {
         { label: 'Mig Spare Parts', path: '/mig-spare-parts' },
       ],
     },
-    { label: 'Stock Advisory and Investment', path: '/stock-advisory-investment' },
+    { label: 'Stock Advisory and Investment', path: '/stock' },
   ];
 
   return (

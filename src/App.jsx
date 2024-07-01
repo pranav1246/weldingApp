@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import MainCards from './components/Cards/MainCards';
+import MainPage from './components/Cards/MainPage';
 import WeldingMachine from './components/Cards/WeldingMachine';
 import SpareParts from './components/Cards/SpareParts'
 import DentPullers from './components/Cards/DentPullers'
@@ -25,7 +25,7 @@ const App = () => {
 
           <main style={{ flexGrow: 1,marginTop:'100px' }}>
             <Routes>
-              <Route path="/" element={<MainCards />} />
+              <Route path="/" element={<MainPage />} />
               <Route path="/welding-machine" element={<WeldingMachine />} />
               <Route path="/dent-pullers" element={<DentPullers />} />
               <Route path="/plasma-cutter" element={<PlasmaCutter />} />
