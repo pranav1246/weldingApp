@@ -2,7 +2,7 @@ import React from 'react';
 import CardComponent from '../CardComponent';
 import { Box, Grid } from '@mui/material';
 
-const SpareParts= () => {
+const WeldingServiceParts= () => {
     const cardData = [
         {
             imageUrl: "https://i.postimg.cc/76KtzbW7/image.png",
@@ -78,4 +78,4 @@ const SpareParts= () => {
     );
 };
 
-export default SpareParts;
+export default WeldingServiceParts;

@@ -2,51 +2,80 @@ import React from 'react';
 import CardComponent from '../CardComponent';
 import { Box, Grid } from '@mui/material';
 
-const MainCards=()=>{
-    return(
-
-        <Box sx={{ flexGrow: 1, padding: '20px', marginLeft: '50px' }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={4}>
-            <CardComponent
-              imageUrl="https://source.unsplash.com/random"
-              title="Card Title 1"
-              description="Some description for Card 1."
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <CardComponent
-              imageUrl="https://source.unsplash.com/featured"
-              title="Card Title 2"
-              description="Another description for Card 2."
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <CardComponent
-              imageUrl="https://source.unsplash.com/random"
-              title="Card Title 1"
-              description="Some description for Card 1."
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <CardComponent
-              imageUrl="https://source.unsplash.com/random"
-              title="Card Title 1"
-              description="Some description for Card 1."
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <CardComponent
-              imageUrl="https://source.unsplash.com/random"
-              title="Card Title 1"
-              description="Some description for Card 1."
-            />
-          </Grid>
-          {/* Add more Grid items for additional cards */}
-        </Grid>
-      </Box>
-    )
-
+const PlasmaCutter= () => {
+    const cardData = [
+        {
+            imageUrl: "https://i.postimg.cc/76KtzbW7/image.png",
+            title: "AUXILIARY GUN",
+            price: "₹5,500.00 + 18% Tax",
+            details: {
 }
+        },
+     
+        {
+            imageUrl: "https://i.postimg.cc/1XCj6442/image.png",
+            title: "BODY STRAIGHTNER BIG",
+            price: "₹13,500.00 + 18% Tax",
+            details: {
+            
+            }
+        },
+        {
+            imageUrl: "https://i.postimg.cc/Px3sHd1X/image.png",
+            title: "CARBON ROD (Pack of 10)",
+            price: "₹1,100.00 + 18% Tax",
+            details: {
+            
+            }
+        },
+        {
+            imageUrl: "https://i.postimg.cc/7L1X0XLj/image.png",
+            title: "CARBON ROD HOLDER",
+            price: "₹350.00 + 18% Tax",
+            details: {
+            
+            }
+        },
+        {
+            imageUrl: "https://i.postimg.cc/mrDLvpHG/image.png",
+            title: "CLAW JAW HAMMER SET",
+            price: "₹4,500.00 + 18% Tax",
+            details: {
+            
+            }
+        },
+        {
+            imageUrl: "https://i.postimg.cc/gkmnMDNG/image.png",
+            title: "EARTH CLAMP",
+            price: "₹2,200.00 + 18% Tax",
+            details: {}
+        },
+        {
+            imageUrl: "https://i.postimg.cc/MZR90Wrh/image.png",
+            title: "ELONG WASHER STRAIGHT (Pack of 50)",
+            price: "₹1,000.00 + 18% Tax",
+            details: {
+            
+            }
+        },
+    ];
 
-export default MainCards;
+    return (
+        <Box sx={{ flexGrow: 1, padding: '20px', marginLeft: '50px' }}>
+            <Grid container spacing={2}>
+                {cardData.map((card, index) => (
+                    <Grid item xs={12} sm={6} md={4} key={index}>
+                        <CardComponent
+                            imageUrl={card.imageUrl}
+                            title={card.title}
+                            price={card.price}
+                            details={card.details}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
+        </Box>
+    );
+};
+
+export default PlasmaCutter;

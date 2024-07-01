@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Sidebar from './components/SideBar';
 import Footer from './components/Footer';
 import MainCards from './components/Cards/MainCards';
 import WeldingMachine from './components/Cards/WeldingMachine';
@@ -12,6 +11,9 @@ import Stock from './components/Cards/Stock'
 import Compressor from './components/Cards/Compressor'
 import Consumables from './components/Cards/Consumables'
 import WeldingConsumable from './components/Cards/WeldingConsumable'
+import VaccumCleaner from './components/Cards/VaccumCleaner';
+import MigSpareParts from './components/Cards/MigSpareParts';
+import WeldingServiceParts from './components/Cards/WeldingServiceParts';
 
 
 const App = () => {
@@ -20,7 +22,7 @@ const App = () => {
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navbar />
         <div style={{ display: 'flex', flexGrow: 1 }}>
-          <Sidebar />
+
           <main style={{ flexGrow: 1,marginTop:'100px' }}>
             <Routes>
               <Route path="/" element={<MainCards />} />
@@ -32,6 +34,10 @@ const App = () => {
               <Route path="/compressors" element={<Compressor />} />
               <Route path="/consumables" element={<Consumables />} />
               <Route path="/welding-consumable" element={<WeldingConsumable/>} />
+              <Route path='/vaccum-cleaner' element={<VaccumCleaner /> } />
+              <Route path='/mig-spare-parts' element={<MigSpareParts /> } />
+              <Route path='/welding-serive-parts' element={<WeldingServiceParts /> } />
+
             </Routes>
           </main>
         </div>

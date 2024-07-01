@@ -5,18 +5,11 @@ import { Box, Grid } from '@mui/material';
 const VaccumCleaner= () => {
     const cardData = [
         {
-            imageUrl: "https://i.postimg.cc/qRZxjbCR/image.png",
-            title: "VACCUM CLEANER XL-30L",
+            imageUrl: "https://i.postimg.cc/br9j2pft/image.png",
+            title: "AUXILIARY GUN",
             price: "₹5,500.00 + 18% Tax",
             details: {
-                "Model":"XTVC 42",
-                "POWER":" ",
-                "RATED VOLTAGE":" ",
-                "MOTOR":" ",
-                "TANK":" 30L",
-                "WIND VOLUME":" "
-                }
-
+}
         },
      
         {

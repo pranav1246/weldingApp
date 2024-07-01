@@ -1,68 +1,200 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Button from '@mui/material/Button';
-import { styled, alpha } from '@mui/material/styles';
-import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
+// import useMediaQuery from '@mui/material/useMediaQuery';
+import Container from '@mui/material/Container';
+import { styled } from '@mui/system';
+import Collapse from '@mui/material/Collapse';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+const NavMenu = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexGrow: 1,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
   },
-  marginLeft: 0,
-  width: '100%',
-  display: 'flex',
-  alignItems: 'center',
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    fontSize: '1.2rem',
+const MobileMenu = styled(Box)(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.down('md')]: {
+    display: 'flex',
+    flexGrow: 1,
+    justifyContent: 'flex-end',
   },
 }));
 
 const Navbar = () => {
+  // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileAnchorEl, setMobileAnchorEl] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState({});
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileAnchorEl(event.currentTarget);
+    setMobileMenuOpen(true);
+  };
+
+  const handleMobileMenuClose = () => {
+    setMobileAnchorEl(null);
+    setMobileMenuOpen(false);
+  };
+
+  const handleSubMenuToggle = (index) => {
+    setOpenSubMenu((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
+  };
+
+  const menuItems = [
+    {
+      label: 'Welding Machineries',
+      subItems: [
+        { label: 'Welding Machine', path: '/welding-machine' },
+        { label: 'Welding Consumables', path: '/welding-consumable' },
+      ],
+    },
+    {
+      label: 'Dent Pullers',
+      subItems: [
+        { label: 'Dent Pulling Machines', path: '/dent-pullers' },
+        { label: 'Consumables', path: '/consumables' },
+      ],
+    },
+    {
+      label: 'Other Machineries',
+      subItems: [
+        { label: 'Plasma Cutters', path: '/plasma-cutters' },
+        { label: 'Compressors', path: '/compressors' },
+        { label: 'Industrial Vacuum Cleaner', path: '/vaccum-cleaner' },
+      ],
+    },
+    {
+      label: 'Spare Parts',
+      subItems: [
+        { label: 'Welding Service Parts', path: '/welding-serive-parts' },
+        { label: 'Mig Spare Parts', path: '/mig-spare-parts' },
+      ],
+    },
+    { label: 'Stock Advisory and Investment', path: '/stock-advisory-investment' },
+  ];
+
   return (
     <AppBar position="fixed">
-      <Toolbar>
-        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-        <img src={'https://i.postimg.cc/cCXw9Hx1/Whats-App-Image-2024-06-29-at-14-28-51.jpg'} 
-        alt="Logo" style={{ height: '60px', width:'150Px', marginTop:'8px' }} />
-        </Typography>
-        <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end',  marginRight:'80px'}}>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
+      <Container maxWidth="xl">
+        <Toolbar>
+          <Typography variant="h6" noWrap component="div">
+            <img
+              src={'https://i.postimg.cc/cCXw9Hx1/Whats-App-Image-2024-06-29-at-14-28-51.jpg'}
+              alt="Logo"
+              style={{ height: '60px', width: '150px', marginTop: '8px', marginRight:'50px'}}
             />
-          </Search>
-          <Button color="inherit" sx={{ fontSize: '1.2rem', marginLeft:'20px' }}>Search</Button>
-        </Box>
-      </Toolbar>
+          </Typography>
+
+          <NavMenu>
+            {menuItems.map((item, index) => (
+              <Box key={index}>
+                {item.subItems ? (
+                  <>
+                    <Button
+                      color="inherit"
+                      onClick={(e) => handleMenuOpen(e)}
+                      aria-controls={`simple-menu-${index}`}
+                      aria-haspopup="true"
+                    >
+                      {item.label}
+                    </Button>
+                    <Menu
+                      id={`simple-menu-${index}`}
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl) && anchorEl.getAttribute('aria-controls') === `simple-menu-${index}`}
+                      onClose={handleMenuClose}
+                    >
+                      {item.subItems.map((subItem, subIndex) => (
+                        <MenuItem key={subIndex} component={Link} to={subItem.path} onClick={handleMenuClose}>
+                          {subItem.label}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </>
+                ) : (
+                  <Button color="inherit" component={Link} to={item.path}>
+                    {item.label}
+                  </Button>
+                )}
+              </Box>
+            ))}
+          </NavMenu>
+
+          <MobileMenu>
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+              aria-controls="mobile-menu"
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="mobile-menu"
+              anchorEl={mobileAnchorEl}
+              keepMounted
+              open={Boolean(mobileAnchorEl) && mobileMenuOpen}
+              onClose={handleMobileMenuClose}
+            >
+              {menuItems.map((item, index) => (
+                <Box key={index}>
+                  {item.subItems ? (
+                    <>
+                      <MenuItem onClick={() => handleSubMenuToggle(index)}>
+                        {item.label}
+                        {openSubMenu[index] ? <ExpandLess /> : <ExpandMore />}
+                      </MenuItem>
+                      <Collapse in={openSubMenu[index]} timeout="auto" unmountOnExit>
+                        {item.subItems.map((subItem, subIndex) => (
+                          <MenuItem key={subIndex} component={Link} to={subItem.path} onClick={handleMobileMenuClose}>
+                            {subItem.label}
+                          </MenuItem>
+                        ))}
+                      </Collapse>
+                    </>
+                  ) : (
+                    <MenuItem component={Link} to={item.path} onClick={handleMobileMenuClose}>
+                      {item.label}
+                    </MenuItem>
+                  )}
+                </Box>
+              ))}
+            </Menu>
+          </MobileMenu>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };
